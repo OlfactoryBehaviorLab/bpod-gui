@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta" 
+
+
+[project]
+name = "bpod-core"
+version = "0.0.1"
+description = "Bpod base GUI package"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = 'MIT' }
+authors = [{ name = "Austin Pauley", email = "pauley@psy.fsu.edu" }]
+
+dependencies = [
+    "pandas",
+    "numpy",
+    "pyside6"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/olfactorybehaviorlab/bpod-gui"
+
+
+# The following would provide a command line executable called `sample`
+# which executes the function `main` from this package when invoked.
+#[project.scripts]
+#sample = "sample:main"
+
+#[tool.setuptools]
+#packages=['']
