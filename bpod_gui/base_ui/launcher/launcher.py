@@ -3,6 +3,8 @@ import sys
 from PySide6.QtWidgets import QMainWindow, QGridLayout, QPushButton, QWidget, QSizePolicy, QMenuBar
 from PySide6.QtCore import QSize
 
+from .about_dialog import About
+
 class Launcher(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -29,13 +31,15 @@ class Launcher(QMainWindow):
         self.main_layout.addWidget(self.manual_control_button, 1, 0)
         self.main_layout.addWidget(self.configure_button, 1, 1)
 
+        self.about_dialog = About(self)
+
         menubar = QMenuBar()
         file_menu = menubar.addMenu(u'&File')
         exit_action = file_menu.addAction(u'&Exit')
         exit_action.triggered.connect(sys.exit)  # We may have cleanup to do here later
 
-        about_menu = menubar.addMenu(u'&About')
-        about_menu.triggered.connect(Launcher.__dummy__)  # Launch about dialog
+        about_menu = menubar.addAction(u'&About')
+        about_menu.triggered.connect(self.about_dialog.open)  # Launch about dialog
         self.setMenuBar(menubar)
 
     def __dummy__(self):
