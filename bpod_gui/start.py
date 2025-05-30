@@ -1,7 +1,7 @@
 import sys
 
 from PySide6 import QtWidgets
-from .ui_components.launcher import Launcher
+from .base_ui.launcher import Launcher
 
 def launch_gui():
     app = QtWidgets.QApplication(sys.argv)
