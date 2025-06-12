@@ -1,6 +1,6 @@
 import sys
 
-from PySide6 import QtWidgets
+from qtpy import QtWidgets
 from .ui.launcher import Launcher
 
 def launch_gui():

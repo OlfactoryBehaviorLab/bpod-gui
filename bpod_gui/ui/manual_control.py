@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QDockWidget, QWidget, QMainWindow
+from qtpy.QtWidgets import QDockWidget, QWidget, QMainWindow
 
 
 class manual_control(QDockWidget):

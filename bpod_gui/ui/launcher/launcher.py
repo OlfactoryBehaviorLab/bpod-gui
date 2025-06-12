@@ -1,7 +1,7 @@
 import sys
 
-from PySide6.QtWidgets import QMainWindow, QGridLayout, QPushButton, QWidget, QSizePolicy, QMenuBar
-from PySide6.QtCore import QSize
+from qtpy.QtWidgets import QMainWindow, QGridLayout, QPushButton, QWidget, QSizePolicy, QMenuBar
+from qtpy.QtCore import QSize
 
 from .about_dialog import About
 
