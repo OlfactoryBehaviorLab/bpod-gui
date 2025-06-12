@@ -5,8 +5,14 @@ from .ui.launcher import Launcher
 
 def launch_gui():
     app = QtWidgets.QApplication(sys.argv)
+    app.setStyle('Fusion')
+    mc = ManualControl()
 
-    launcher = Launcher()
-    launcher.show()
+    with open('bpod_gui/qss/manual_control_interface.qss') as f:
+        style = f.read()
+        mc.setStyleSheet(style)
 
+    # launcher = Launcher()
+    # launcher.show()
+    mc.show()
     app.exec()

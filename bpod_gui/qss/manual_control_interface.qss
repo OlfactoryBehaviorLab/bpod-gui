@@ -1,0 +1,23 @@
+QWidget {
+    font-family: 'Courier New';
+    font-size: 14px;
+}
+
+QLabel#manual_control_title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+QLabel#live_info_header {
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-radius: 0px;
+    border-color: grey;
+    margin-bottom: 5px;
+}
+
+QLabel[type="live-info"] {
+    background-color: grey;
+    margin-bottom: 5px;
+    padding: 2px, 2px, 2px, 2px;
+}
