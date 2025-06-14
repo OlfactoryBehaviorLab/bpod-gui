@@ -24,7 +24,7 @@ class ManualControl(QWidget):
 
         ## Row 1
         self.title = QLabel()
-        self.title.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
+        self.title.setSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum)
         self.title.setText('Bpod Console ')
         self.title.setObjectName('manual_control_title')
         self.main_layout.addWidget(self.title, 0, 0, 1, 2)
@@ -35,7 +35,7 @@ class ManualControl(QWidget):
         self.title_line.setSizePolicy(QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.Minimum)
         self.title_line.setLineWidth(5)
         self.title_line.setMidLineWidth(5)
-        self.title_line.setMinimumWidth(100)
+        self.title_line.setMinimumWidth(200)
 
         self.main_layout.addWidget(self.title_line, 0, 2, 1, -1)
 
@@ -46,12 +46,15 @@ class ManualControl(QWidget):
         self.live_info_header = QLabel()
         self.live_info_header.setText('  Live Info  ')
         self.live_info_header.setObjectName('live_info_header')
+        self.live_info_header.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.live_info_header.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
         self.live_info_layout.addWidget(self.live_info_header)
 
         self.current_state_header = QLabel()
         self.current_state_header.setText('Current State')
         self.current_state_display = QLabel()
         self.current_state_display.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.current_state_display.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
         self.current_state_display.setText('---')
         self.current_state_display.setProperty('type', 'live-info')
 
@@ -62,6 +65,7 @@ class ManualControl(QWidget):
         self.previous_state_header.setText('Previous State')
         self.previous_state_display = QLabel()
         self.previous_state_display.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.previous_state_display.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
         self.previous_state_display.setText('---')
         self.previous_state_display.setProperty('type', 'live-info')
 
@@ -72,6 +76,7 @@ class ManualControl(QWidget):
         self.last_event_header.setText('Last Event')
         self.last_event_display = QLabel()
         self.last_event_display.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.last_event_display.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
         self.last_event_display.setText('---')
         self.last_event_display.setProperty('type', 'live-info')
 
@@ -82,6 +87,7 @@ class ManualControl(QWidget):
         self.session_time_header.setText('Session Time')
         self.session_time_display = QLabel()
         self.session_time_display.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.session_time_display.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
         self.session_time_display.setText('0:00:00')
         self.session_time_display.setProperty('type', 'live-info')
 
@@ -92,6 +98,7 @@ class ManualControl(QWidget):
         self.port_header.setText('Port')
         self.port_display = QLabel()
         self.port_display.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.port_display.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
         self.port_display.setText('PORT_HERE')
         self.port_display.setProperty('type', 'live-info')
 
