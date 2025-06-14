@@ -47,17 +47,14 @@ class ManualControl(QWidget):
         self.live_info_header.setText('  Live Info  ')
         self.live_info_header.setObjectName('live_info_header')
         self.live_info_header.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.live_info_header.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
         self.live_info_layout.addWidget(self.live_info_header)
 
         self.current_state_header = QLabel()
         self.current_state_header.setText('Current State')
         self.current_state_display = QLabel()
         self.current_state_display.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.current_state_display.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
         self.current_state_display.setText('---')
         self.current_state_display.setProperty('type', 'live-info')
-
         self.live_info_layout.addWidget(self.current_state_header)
         self.live_info_layout.addWidget(self.current_state_display)
 
@@ -65,10 +62,8 @@ class ManualControl(QWidget):
         self.previous_state_header.setText('Previous State')
         self.previous_state_display = QLabel()
         self.previous_state_display.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.previous_state_display.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
         self.previous_state_display.setText('---')
         self.previous_state_display.setProperty('type', 'live-info')
-
         self.live_info_layout.addWidget(self.previous_state_header)
         self.live_info_layout.addWidget(self.previous_state_display)
 
@@ -76,10 +71,8 @@ class ManualControl(QWidget):
         self.last_event_header.setText('Last Event')
         self.last_event_display = QLabel()
         self.last_event_display.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.last_event_display.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
         self.last_event_display.setText('---')
         self.last_event_display.setProperty('type', 'live-info')
-
         self.live_info_layout.addWidget(self.last_event_header)
         self.live_info_layout.addWidget(self.last_event_display)
 
@@ -87,10 +80,8 @@ class ManualControl(QWidget):
         self.session_time_header.setText('Session Time')
         self.session_time_display = QLabel()
         self.session_time_display.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.session_time_display.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
         self.session_time_display.setText('0:00:00')
         self.session_time_display.setProperty('type', 'live-info')
-
         self.live_info_layout.addWidget(self.session_time_header)
         self.live_info_layout.addWidget(self.session_time_display)
 
@@ -98,10 +89,8 @@ class ManualControl(QWidget):
         self.port_header.setText('Port')
         self.port_display = QLabel()
         self.port_display.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.port_display.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
         self.port_display.setText('PORT_HERE')
         self.port_display.setProperty('type', 'live-info')
-
         self.live_info_layout.addWidget(self.port_header)
         self.live_info_layout.addWidget(self.port_display)
 
@@ -109,8 +98,10 @@ class ManualControl(QWidget):
         self.gui_version.setText(f"v{VERSION}")
         self.gui_version.setAlignment(Qt.AlignmentFlag.AlignLeft)
         self.gui_version.setObjectName('version')
-
         self.live_info_layout.addWidget(self.gui_version)
+
+        self.apply_size_policy_to_layout(self.live_info_layout, QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum)
+        self.apply_max_width_to_layout(self.live_info_layout, 150)
 
         self.main_layout.addLayout(self.live_info_layout, 1, 0, -1, 1)
 
@@ -125,3 +116,29 @@ class ManualControl(QWidget):
         self.central_tabbed_container.addTab(ModuleWidget(), 'Module 3')
         self.main_layout.addWidget(self.central_tabbed_container, 1, 1, -1, 3)
 
+    @staticmethod
+    def apply_size_policy_to_layout(layout: QLayout,
+                                    horizontal_policy: QSizePolicy.Policy,
+                                    vertical_policy: QSizePolicy.Policy
+                                    ) -> None:
+        """
+        Iterates over widgets in the provided QLayout and calls **setSizePolicy** on
+        each widget using the horizontal_policy and vertical_policy parameters.
+        :param layout: QLayout
+        :param horizontal_policy: QSizePolicy.Policy
+        :param vertical_policy: QSizePolicy.Policy
+        """
+        for i in range(layout.count()):
+            layout.itemAt(i).widget().setSizePolicy(horizontal_policy, vertical_policy)
+
+    @staticmethod
+    def apply_max_width_to_layout(layout: QLayout, max_width: int) -> None:
+        """
+        Iterates over the widgets in the provided QLayout and calls **setMaximumWidth** on
+        each widget using the max_width parameter.
+
+        :param layout: QLayout
+        :param max_width: int
+        """
+        for i in range(layout.count()):
+            layout.itemAt(i).widget().setMaximumWidth(max_width)
