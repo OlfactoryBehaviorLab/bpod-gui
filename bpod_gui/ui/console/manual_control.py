@@ -1,6 +1,8 @@
 from qtpy.QtCore import Qt
-from qtpy.QtWidgets import QDockWidget, QWidget, QMainWindow, QGridLayout, QLabel, QSizePolicy, QFrame, QVBoxLayout
+from qtpy.QtWidgets import QDockWidget, QWidget, QMainWindow, QGridLayout, QLabel, QSizePolicy, QFrame, QVBoxLayout, QTabWidget
 from bpod_gui import __version__
+from .state_machine_widget import StateMachineWidget
+from .module_widget import ModuleWidget
 VERSION = __version__
 
 class ManualControlContainer(QDockWidget):
@@ -104,3 +106,15 @@ class ManualControl(QWidget):
         self.live_info_layout.addWidget(self.gui_version)
 
         self.main_layout.addLayout(self.live_info_layout, 1, 0, -1, 1)
+
+        # Tabbed Controls
+
+        self.central_tabbed_container = QTabWidget()
+        self.state_machine_widget = StateMachineWidget()
+        self.central_tabbed_container.addTab(self.state_machine_widget, 'State Machine')
+        # These are placeholders; will dynamically fill later
+        self.central_tabbed_container.addTab(ModuleWidget(), 'Module 1')
+        self.central_tabbed_container.addTab(ModuleWidget(), 'Module 2')
+        self.central_tabbed_container.addTab(ModuleWidget(), 'Module 3')
+        self.main_layout.addWidget(self.central_tabbed_container, 1, 1, -1, 3)
+
