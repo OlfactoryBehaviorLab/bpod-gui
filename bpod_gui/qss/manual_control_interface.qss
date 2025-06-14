@@ -26,3 +26,13 @@ QLabel[type="live-info"] {
     margin-bottom: 5px;
     padding: 2px, 2px, 2px, 2px;
 }
+
+QLabel[type="smw_underlined_header"] {
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-radius: 0px;
+    border-color: grey;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
