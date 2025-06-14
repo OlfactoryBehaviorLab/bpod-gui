@@ -5,7 +5,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "bpod-gui"
-version = "0.0.1"
+#version = "0.0.1"
+dynamic = ["version"]
 description = "Bpod base GUI package"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -17,6 +18,9 @@ dependencies = [
     "numpy",
     "qtpy"
 ]
+
+[tool.setuptools.dynamic]
+version = {attr="bpod_gui.__version__"}
 
 [project.optional-dependencies]
 pyqt5 = ["pyqt5"]
