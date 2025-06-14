@@ -1,7 +1,7 @@
 import sys
 
 from qtpy import QtWidgets
-from .ui.launcher import Launcher
+from .ui.console import ManualControl
 
 def launch_gui():
     app = QtWidgets.QApplication(sys.argv)
