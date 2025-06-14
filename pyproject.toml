@@ -10,7 +10,7 @@ dynamic = ["version"]
 description = "Bpod base GUI package"
 readme = "README.md"
 requires-python = ">=3.12"
-license = { text = 'MIT' }
+license = "MIT"
 authors = [{ name = "Austin Pauley", email = "pauley@psy.fsu.edu" }]
 
 dependencies = [
