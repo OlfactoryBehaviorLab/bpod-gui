@@ -1,6 +1,7 @@
 from qtpy.QtCore import Qt
 from qtpy.QtWidgets import QDockWidget, QWidget, QMainWindow, QGridLayout, QLabel, QSizePolicy, QFrame, QVBoxLayout
-
+from bpod_gui import __version__
+VERSION = __version__
 
 class ManualControlContainer(QDockWidget):
 
@@ -94,5 +95,12 @@ class ManualControl(QWidget):
 
         self.live_info_layout.addWidget(self.port_header)
         self.live_info_layout.addWidget(self.port_display)
+
+        self.gui_version = QLabel()
+        self.gui_version.setText(f"v{VERSION}")
+        self.gui_version.setAlignment(Qt.AlignmentFlag.AlignLeft)
+        self.gui_version.setObjectName('version')
+
+        self.live_info_layout.addWidget(self.gui_version)
 
         self.main_layout.addLayout(self.live_info_layout, 1, 0, -1, 1)

@@ -16,6 +16,11 @@ QLabel#live_info_header {
     margin-bottom: 5px;
 }
 
+QLabel#version{
+    font-size: 10px;
+    font-style: italic;
+}
+
 QLabel[type="live-info"] {
     background-color: grey;
     margin-bottom: 5px;
