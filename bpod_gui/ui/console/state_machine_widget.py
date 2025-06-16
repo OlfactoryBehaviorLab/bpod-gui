@@ -1,5 +1,8 @@
+from PySide6.QtGui import QColor
 from qtpy.QtCore import Qt
 from qtpy.QtWidgets import QWidget, QSizePolicy, QLabel, QGridLayout
+
+from bpod_gui.ui.console.components.LED import LED
 
 
 class StateMachineWidget(QWidget):
@@ -21,6 +24,8 @@ class StateMachineWidget(QWidget):
         )
         self.behavior_ports_label.setProperty("type", "smw_underlined_header")
         self.grid_layout.addWidget(self.behavior_ports_label, 0, 0, 1, 2)
+        self.example_led = LED()
+        self.grid_layout.addWidget(self.example_led, 1, 0, 1, 2)
 
         self.bnc_in_label = QLabel()
         self.bnc_in_label.setText("BNC In")
