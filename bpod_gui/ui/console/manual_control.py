@@ -1,4 +1,4 @@
-from qtpy.QtCore import Qt
+from qtpy.QtCore import Qt, QSize
 from qtpy.QtWidgets import (
     QDockWidget,
     QWidget,
@@ -9,6 +9,7 @@ from qtpy.QtWidgets import (
     QVBoxLayout,
     QTabWidget,
     QLayout,
+    QPushButton,
 )
 from bpod_gui import __version__
 from .state_machine_widget import StateMachineWidget
@@ -51,13 +52,12 @@ class ManualControl(QWidget):
 
         self.main_layout.addWidget(self.title_line, 0, 2, 1, -1)
 
-        ## Row 2
-
-        # Live Info
+        ## ===Row 2===
+        # Column 1: Live Info
         self.live_info_layout = QVBoxLayout()
         self.live_info_header = QLabel()
         self.live_info_header.setText("  Live Info  ")
-        self.live_info_header.setObjectName("live_info_header")
+        self.live_info_header.setProperty("type", "header")
         self.live_info_header.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.live_info_layout.addWidget(self.live_info_header)
 
@@ -121,7 +121,7 @@ class ManualControl(QWidget):
 
         self.main_layout.addLayout(self.live_info_layout, 1, 0, -1, 1)
 
-        # Tabbed Controls
+        # Middle Columns: Tabbed Controls
 
         self.central_tabbed_container = QTabWidget()
         self.state_machine_widget = StateMachineWidget()
@@ -131,6 +131,66 @@ class ManualControl(QWidget):
         self.central_tabbed_container.addTab(ModuleWidget(), "Module 2")
         self.central_tabbed_container.addTab(ModuleWidget(), "Module 3")
         self.main_layout.addWidget(self.central_tabbed_container, 1, 1, -1, 3)
+
+        # Rightmost Column: Misc. Controls
+
+        self.right_column_layout = QVBoxLayout()
+
+        self.config_layout = QGridLayout()
+        self.config_layout.setAlignment(Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignHCenter)
+        self.config_header = QLabel()
+        self.config_header.setText("  Config  ")
+        self.config_header.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.config_header.setProperty("type", "header")
+        self.right_column_layout.addWidget(self.config_header)
+
+        self.refresh_button = QPushButton()
+        self.refresh_button.setText("R")
+        self.refresh_button.setToolTip("Refresh Module Information")
+        self.refresh_button.setMaximumSize(QSize(30, 30))
+        self.settings_button = QPushButton()
+        self.settings_button.setText("S")
+        self.settings_button.setMaximumSize(QSize(30, 30))
+        self.settings_button.setToolTip("Open settings menu")
+        self.USB_button = QPushButton()
+        self.USB_button.setText("U")
+        self.USB_button.setMaximumSize(QSize(30, 30))
+        self.USB_button.setToolTip("Configure module USB ports")
+        self.sys_info_button = QPushButton()
+        self.sys_info_button.setText("I")
+        self.sys_info_button.setMaximumSize(QSize(30, 30))
+        self.sys_info_button.setToolTip("Open system information")
+
+        self.config_layout.addWidget(self.refresh_button, 1, 0, 1, 1)
+        self.config_layout.addWidget(self.settings_button, 1, 1, 1, 1)
+        self.config_layout.addWidget(self.USB_button, 2, 0, 1, 1)
+        self.config_layout.addWidget(self.sys_info_button, 2, 1, 1, 1)
+
+        self.right_column_layout.addLayout(self.config_layout)
+
+        self.session_controls_layout = QVBoxLayout()
+        self.session_controls_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
+        self.session_controls_header = QLabel()
+        self.session_controls_header.setText("  Session  ")
+        self.session_controls_header.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.session_controls_header.setProperty("type", "header")
+        self.session_controls_layout.addWidget(self.session_controls_header)
+
+        self.session_play_pause_button = QPushButton()
+        self.session_play_pause_button.setText("Play")
+        self.session_play_pause_button.setMaximumSize(QSize(90, 90))
+        self.session_play_pause_button.setSizePolicy(QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.MinimumExpanding)
+        self.session_controls_layout.addWidget(self.session_play_pause_button)
+
+        self.session_stop_button = QPushButton()
+        self.session_stop_button.setText("Stop")
+        self.session_stop_button.setMaximumSize(QSize(90, 90))
+        self.session_stop_button.setSizePolicy(QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.MinimumExpanding)
+        self.session_controls_layout.addWidget(self.session_stop_button)
+
+        self.right_column_layout.addLayout(self.session_controls_layout)
+
+        self.main_layout.addLayout(self.right_column_layout, 1, 4, -1, 1)
 
     @staticmethod
     def apply_size_policy_to_layout(

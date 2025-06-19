@@ -8,7 +8,7 @@ QLabel#manual_control_title {
     font-weight: bold;
 }
 
-QLabel#live_info_header {
+QLabel[type="header"] {
     border-bottom-width: 2px;
     border-bottom-style: solid;
     border-radius: 0px;
