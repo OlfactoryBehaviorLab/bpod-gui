@@ -54,71 +54,7 @@ class ManualControl(QWidget):
 
         ## ===Row 2===
         # Column 1: Live Info
-        self.live_info_layout = QVBoxLayout()
-        self.live_info_header = QLabel()
-        self.live_info_header.setText("  Live Info  ")
-        self.live_info_header.setProperty("type", "header")
-        self.live_info_header.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.live_info_layout.addWidget(self.live_info_header)
-
-        self.current_state_header = QLabel()
-        self.current_state_header.setText("Current State")
-        self.current_state_display = QLabel()
-        self.current_state_display.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.current_state_display.setText("---")
-        self.current_state_display.setProperty("type", "live-info")
-        self.live_info_layout.addWidget(self.current_state_header)
-        self.live_info_layout.addWidget(self.current_state_display)
-
-        self.previous_state_header = QLabel()
-        self.previous_state_header.setText("Previous State")
-        self.previous_state_display = QLabel()
-        self.previous_state_display.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.previous_state_display.setText("---")
-        self.previous_state_display.setProperty("type", "live-info")
-        self.live_info_layout.addWidget(self.previous_state_header)
-        self.live_info_layout.addWidget(self.previous_state_display)
-
-        self.last_event_header = QLabel()
-        self.last_event_header.setText("Last Event")
-        self.last_event_display = QLabel()
-        self.last_event_display.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.last_event_display.setText("---")
-        self.last_event_display.setProperty("type", "live-info")
-        self.live_info_layout.addWidget(self.last_event_header)
-        self.live_info_layout.addWidget(self.last_event_display)
-
-        self.session_time_header = QLabel()
-        self.session_time_header.setText("Session Time")
-        self.session_time_display = QLabel()
-        self.session_time_display.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.session_time_display.setText("0:00:00")
-        self.session_time_display.setProperty("type", "live-info")
-        self.live_info_layout.addWidget(self.session_time_header)
-        self.live_info_layout.addWidget(self.session_time_display)
-
-        self.port_header = QLabel()
-        self.port_header.setText("Port")
-        self.port_display = QLabel()
-        self.port_display.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.port_display.setText("PORT_HERE")
-        self.port_display.setProperty("type", "live-info")
-        self.live_info_layout.addWidget(self.port_header)
-        self.live_info_layout.addWidget(self.port_display)
-
-        self.gui_version = QLabel()
-        self.gui_version.setText(f"v{VERSION}")
-        self.gui_version.setAlignment(Qt.AlignmentFlag.AlignLeft)
-        self.gui_version.setObjectName("version")
-        self.live_info_layout.addWidget(self.gui_version)
-
-        self.apply_size_policy_to_layout(
-            self.live_info_layout,
-            QSizePolicy.Policy.Maximum,
-            QSizePolicy.Policy.Maximum,
-        )
-        self.apply_max_width_to_layout(self.live_info_layout, 150)
-
+        self.live_info_layout = LiveInfoLayout()
         self.main_layout.addLayout(self.live_info_layout, 1, 0, -1, 1)
 
         # Middle Columns: Tabbed Controls
@@ -219,3 +155,72 @@ class ManualControl(QWidget):
         """
         for i in range(layout.count()):
             layout.itemAt(i).widget().setMaximumWidth(max_width)
+
+
+class LiveInfoLayout(QVBoxLayout):
+
+    def __init__(self):
+        super().__init__()
+        self.live_info_header = QLabel()
+        self.live_info_header.setText("  Live Info  ")
+        self.live_info_header.setProperty("type", "header")
+        self.live_info_header.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.addWidget(self.live_info_header)
+
+        self.current_state_header = QLabel()
+        self.current_state_header.setText("Current State")
+        self.current_state_display = QLabel()
+        self.current_state_display.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.current_state_display.setText("---")
+        self.current_state_display.setProperty("type", "live-info")
+        self.addWidget(self.current_state_header)
+        self.addWidget(self.current_state_display)
+
+        self.previous_state_header = QLabel()
+        self.previous_state_header.setText("Previous State")
+        self.previous_state_display = QLabel()
+        self.previous_state_display.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.previous_state_display.setText("---")
+        self.previous_state_display.setProperty("type", "live-info")
+        self.addWidget(self.previous_state_header)
+        self.addWidget(self.previous_state_display)
+
+        self.last_event_header = QLabel()
+        self.last_event_header.setText("Last Event")
+        self.last_event_display = QLabel()
+        self.last_event_display.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.last_event_display.setText("---")
+        self.last_event_display.setProperty("type", "live-info")
+        self.addWidget(self.last_event_header)
+        self.addWidget(self.last_event_display)
+
+        self.session_time_header = QLabel()
+        self.session_time_header.setText("Session Time")
+        self.session_time_display = QLabel()
+        self.session_time_display.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.session_time_display.setText("0:00:00")
+        self.session_time_display.setProperty("type", "live-info")
+        self.addWidget(self.session_time_header)
+        self.addWidget(self.session_time_display)
+
+        self.port_header = QLabel()
+        self.port_header.setText("Port")
+        self.port_display = QLabel()
+        self.port_display.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.port_display.setText("PORT_HERE")
+        self.port_display.setProperty("type", "live-info")
+        self.addWidget(self.port_header)
+        self.addWidget(self.port_display)
+
+        self.gui_version = QLabel()
+        self.gui_version.setText(f"v{VERSION}")
+        self.gui_version.setAlignment(Qt.AlignmentFlag.AlignLeft)
+        self.gui_version.setObjectName("version")
+        self.addWidget(self.gui_version)
+
+        ManualControl.apply_size_policy_to_layout(
+            self,
+            QSizePolicy.Policy.Maximum,
+            QSizePolicy.Policy.Maximum,
+        )
+        ManualControl.apply_max_width_to_layout(self, 150)
