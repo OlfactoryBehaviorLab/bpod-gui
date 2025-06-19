@@ -54,7 +54,7 @@ class ManualControl(QWidget):
 
         ## ===Row 2===
         # Column 1: Live Info
-        self.live_info_layout = LiveInfoLayout()
+        self.live_info_layout = LiveInfoColumn()
         self.main_layout.addLayout(self.live_info_layout, 1, 0, -1, 1)
 
         # Middle Columns: Tabbed Controls
@@ -101,7 +101,7 @@ class ManualControl(QWidget):
             layout.itemAt(i).widget().setMaximumWidth(max_width)
 
 
-class LiveInfoLayout(QVBoxLayout):
+class LiveInfoColumn(QVBoxLayout):
 
     def __init__(self):
         super().__init__()
