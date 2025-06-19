@@ -8,7 +8,7 @@ class LED(QtWidgets.QAbstractButton):
         self.setCheckable(True)
 
     def sizeHint(self) -> QtCore.QSize:
-        return QtCore.QSize(35, 35)
+        return QtCore.QSize(15, 15)
 
     def paintEvent(self, e) -> None:
         # base
