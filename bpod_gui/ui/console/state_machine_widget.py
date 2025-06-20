@@ -51,7 +51,23 @@ class StateMachineWidget(QWidget):
         self.bnc_out_label.setProperty("type", "smw_underlined_header")
         self.grid_layout.addWidget(self.bnc_out_label, 0, 6, 1, 1)
 
+        self.wire_in_label = QLabel()
+        self.wire_in_label.setText("Wire In")
+        self.wire_in_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.wire_in_label.setSizePolicy(
+            QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
+        )
+        self.wire_in_label.setProperty("type", "smw_underlined_header")
+        self.grid_layout.addWidget(self.wire_in_label, 1, 4, 1, 1)
 
+        self.wire_out_label = QLabel()
+        self.wire_out_label.setText("Wire Out")
+        self.wire_out_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.wire_out_label.setSizePolicy(
+            QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
+        )
+        self.wire_out_label.setProperty("type", "smw_underlined_header")
+        self.grid_layout.addWidget(self.wire_out_label, 1, 6, 1, 1)
 
 class BehaviorPortControls(QGridLayout):
     def __init__(self, num_ports):
