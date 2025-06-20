@@ -60,6 +60,7 @@ class ManualControl(QWidget):
         # Middle Columns: Tabbed Controls
 
         self.central_tabbed_container = QTabWidget()
+        self.central_tabbed_container.setSizePolicy(QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.MinimumExpanding)
         self.state_machine_widget = StateMachineWidget()
         self.central_tabbed_container.addTab(self.state_machine_widget, "State Machine")
         # These are placeholders; will dynamically fill later
