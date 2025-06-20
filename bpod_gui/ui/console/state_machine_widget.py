@@ -1,9 +1,5 @@
-from typing import Iterable
-
-from PySide6.QtGui import QColor
 from qtpy.QtCore import Qt
 from qtpy.QtWidgets import QWidget, QSizePolicy, QLabel, QGridLayout
-
 from bpod_gui.ui.console.components.LED import LED
 
 
@@ -76,7 +72,6 @@ class BehaviorPortControls(QGridLayout):
         self.num_ports = num_ports
 
         self.populate_ports()
-
 
 
     def populate_ports(self):
