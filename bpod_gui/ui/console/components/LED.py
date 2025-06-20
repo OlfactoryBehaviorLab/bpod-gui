@@ -3,12 +3,13 @@ from qtpy.QtCore import Qt
 
 
 class LED(QtWidgets.QAbstractButton):
-    def __init__(self, *args, **kwargs) -> None:
+    def __init__(self, size: int = 25, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
         self.setCheckable(True)
+        self._size = size
 
     def sizeHint(self) -> QtCore.QSize:
-        return QtCore.QSize(15, 15)
+        return QtCore.QSize(self._size, self._size)
 
     def paintEvent(self, e) -> None:
         # base
