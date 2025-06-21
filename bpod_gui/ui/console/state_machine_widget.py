@@ -1,5 +1,5 @@
 from qtpy.QtCore import Qt
-from qtpy.QtWidgets import QWidget, QSizePolicy, QLabel, QGridLayout
+from qtpy.QtWidgets import QWidget, QSizePolicy, QLabel, QGridLayout, QFrame
 from bpod_gui.ui.console.components.LED import LED
 
 
@@ -11,17 +11,16 @@ class StateMachineWidget(QWidget):
 
         self.setObjectName("state_machine_widget")
         self.setSizePolicy(
-            QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum
+            QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Maximum
         )
         self.grid_layout = QGridLayout()
         self.setLayout(self.grid_layout)
-        self.grid_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
 
         self.behavior_ports_label = QLabel()
         self.behavior_ports_label.setText("Behavior Ports")
         self.behavior_ports_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.behavior_ports_label.setSizePolicy(
-            QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum
+            QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Maximum
         )
         self.behavior_ports_label.setProperty("type", "smw_underlined_header")
         self.grid_layout.addWidget(self.behavior_ports_label, 0, 0, 1, 2)
@@ -29,21 +28,31 @@ class StateMachineWidget(QWidget):
         self.behavior_port_controls = BehaviorPortControls(self.num_ports)
         self.grid_layout.addLayout(self.behavior_port_controls, 1, 0, -1, 2)
 
+        self.separator = QFrame()
+        self.separator.setFrameShape(QFrame.Shape.VLine)
+        self.separator.setFrameShadow(QFrame.Shadow.Raised)
+        self.separator.setLineWidth(5)
+        self.grid_layout.addWidget(self.separator, 0, 3, -1, 1)
+
         self.bnc_in_label = QLabel()
         self.bnc_in_label.setText("BNC In")
         self.bnc_in_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.bnc_in_label.setSizePolicy(
-            QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Minimum
+            QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
         )
         self.bnc_in_label.setProperty("type", "smw_underlined_header")
-        self.grid_layout.addWidget(self.bnc_in_label, 0, 4, 1, 1)
+        self.grid_layout.addWidget(self.bnc_in_label, 0, 4, 1, 3)
 
         self.bnc_out_label = QLabel()
         self.bnc_out_label.setText("BNC Out")
         self.bnc_out_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.bnc_out_label.setSizePolicy(
-            QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Minimum
+            QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
         )
+
+        self.IOControls = IOControls()
+        self.grid_layout.addLayout(self.IOControls, 1, 4, 1, -1)
+
         self.bnc_out_label.setProperty("type", "smw_underlined_header")
         self.grid_layout.addWidget(self.bnc_out_label, 0, 6, 1, 1)
 
@@ -54,7 +63,7 @@ class StateMachineWidget(QWidget):
             QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
         )
         self.wire_in_label.setProperty("type", "smw_underlined_header")
-        self.grid_layout.addWidget(self.wire_in_label, 1, 4, 1, 1)
+        self.grid_layout.addWidget(self.wire_in_label, 2, 4, 1, 1)
 
         self.wire_out_label = QLabel()
         self.wire_out_label.setText("Wire Out")
@@ -63,16 +72,16 @@ class StateMachineWidget(QWidget):
             QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
         )
         self.wire_out_label.setProperty("type", "smw_underlined_header")
-        self.grid_layout.addWidget(self.wire_out_label, 1, 6, 1, 1)
+        self.grid_layout.addWidget(self.wire_out_label, 2, 6, 1, 1)
+
+        self.wire_controls = IOControls()
+        self.grid_layout.addLayout(self.wire_controls, 3, 4, -1, -1)
 
 class BehaviorPortControls(QGridLayout):
     def __init__(self, num_ports):
         super().__init__()
-
         self.num_ports = num_ports
-
         self.populate_ports()
-
 
     def populate_ports(self):
         _layouts = []
