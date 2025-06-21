@@ -74,7 +74,7 @@ class StateMachineWidget(QWidget):
         self.wire_out_label.setProperty("type", "smw_underlined_header")
         self.grid_layout.addWidget(self.wire_out_label, 2, 6, 1, 1)
 
-        self.wire_controls = IOControls()
+        self.wire_controls = WireControls()
         self.grid_layout.addLayout(self.wire_controls, 3, 4, -1, -1)
 
 class BehaviorPortControls(QGridLayout):
@@ -213,3 +213,67 @@ class IOControls(QGridLayout):
         )
         self.output_2_button.setObjectName('output_2_button')
         self.addWidget(self.output_2_button, 1, 4, 1, 1)
+
+class WireControls(QGridLayout):
+    def __init__(self):
+        super().__init__()
+
+        self.wire_in_1_label = QLabel()
+        self.wire_in_1_label.setText("1")
+        self.wire_in_1_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.wire_in_1_label.setSizePolicy(
+            QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Maximum
+        )
+        self.addWidget(self.wire_in_1_label, 0, 0, 1, 1)
+
+        self.wire_in_2_label = QLabel()
+        self.wire_in_2_label.setText("2")
+        self.wire_in_2_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.wire_in_2_label.setSizePolicy(
+            QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Maximum
+        )
+        self.addWidget(self.wire_in_2_label, 0, 1, 1, 1)
+
+        self.wire_in_3_label = QLabel()
+        self.wire_in_3_label.setText("3")
+        self.wire_in_3_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.wire_in_3_label.setSizePolicy(
+            QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Maximum
+        )
+        self.addWidget(self.wire_in_3_label, 2, 0, 1, 1)
+
+        self.wire_in_4_label = QLabel()
+        self.wire_in_4_label.setText("4")
+        self.wire_in_4_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.wire_in_4_label.setSizePolicy(
+            QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Maximum
+        )
+        self.addWidget(self.wire_in_4_label, 2, 1, 1, 1)
+
+        self.wire_in_1_button = LED()
+        self.wire_in_1_button.setSizePolicy(
+            QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
+        )
+        self.wire_in_1_button.setObjectName('wire_in_1_button')
+        self.addWidget(self.wire_in_1_button, 1, 0, 1, 1)
+
+        self.wire_in_2_button = LED()
+        self.wire_in_2_button.setSizePolicy(
+            QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
+        )
+        self.wire_in_2_button.setObjectName('wire_in_2_button')
+        self.addWidget(self.wire_in_2_button, 1, 1, 1, 1)
+
+        self.wire_in_3_button = LED()
+        self.wire_in_3_button.setSizePolicy(
+            QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
+        )
+        self.wire_in_3_button.setObjectName('wire_in_3_button')
+        self.addWidget(self.wire_in_3_button, 3, 0, 1, 1)
+
+        self.wire_in_4_button = LED()
+        self.wire_in_4_button.setSizePolicy(
+            QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
+        )
+        self.wire_in_4_button.setObjectName('wire_in_4_button')
+        self.addWidget(self.wire_in_4_button, 3, 1, 1, 1)
