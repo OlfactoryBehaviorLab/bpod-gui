@@ -148,3 +148,68 @@ class BehaviorPortControls(QGridLayout):
             )
             _poke_button.setObjectName(f'poke_{i+1}')
             self.addWidget(_poke_button, 3, i+1, 1, 1)
+
+
+class IOControls(QGridLayout):
+    def __init__(self):
+        super().__init__()
+
+        self.input_1_label = QLabel()
+        self.input_1_label.setText("1")
+        self.input_1_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.input_1_label.setSizePolicy(
+            QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Maximum
+        )
+        self.addWidget(self.input_1_label, 0, 0, 1, 1)
+
+        self.input_2_label = QLabel()
+        self.input_2_label.setText("2")
+        self.input_2_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.input_2_label.setSizePolicy(
+            QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Maximum
+        )
+        self.addWidget(self.input_2_label, 0, 1, 1, 1)
+
+        self.output_1_label = QLabel()
+        self.output_1_label.setText("1")
+        self.output_1_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.output_1_label.setSizePolicy(
+            QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Maximum
+        )
+        self.addWidget(self.output_1_label, 0, 3, 1, 1)
+
+        self.output_2_label = QLabel()
+        self.output_2_label.setText("2")
+        self.output_2_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.output_2_label.setSizePolicy(
+            QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Maximum
+        )
+        self.addWidget(self.output_2_label, 0, 4, 1, 1)
+
+        self.input_1_button = LED()
+        self.input_1_button.setSizePolicy(
+            QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
+        )
+        self.input_1_button.setObjectName('input_1_button')
+        self.addWidget(self.input_1_button, 1, 0, 1, 1)
+
+        self.input_2_button = LED()
+        self.input_2_button.setSizePolicy(
+            QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
+        )
+        self.input_2_button.setObjectName('input_2_button')
+        self.addWidget(self.input_2_button, 1, 1, 1, 1)
+
+        self.output_1_button = LED()
+        self.output_1_button.setSizePolicy(
+            QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
+        )
+        self.output_1_button.setObjectName('output_1_button')
+        self.addWidget(self.output_1_button, 1, 3, 1, 1)
+
+        self.output_2_button = LED()
+        self.output_2_button.setSizePolicy(
+            QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
+        )
+        self.output_2_button.setObjectName('output_2_button')
+        self.addWidget(self.output_2_button, 1, 4, 1, 1)
