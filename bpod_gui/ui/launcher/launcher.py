@@ -10,7 +10,7 @@ from qtpy.QtWidgets import (
 )
 from qtpy.QtCore import QSize
 
-from .about_dialog import About
+from bpod_gui.ui.launcher.about_dialog import About
 
 
 class Launcher(QMainWindow):

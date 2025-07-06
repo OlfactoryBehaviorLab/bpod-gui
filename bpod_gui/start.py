@@ -1,7 +1,7 @@
 import sys
 
 from qtpy import QtWidgets
-from .ui.console import ManualControl
+from bpod_gui.ui.console import ManualControl
 
 
 def launch_gui():

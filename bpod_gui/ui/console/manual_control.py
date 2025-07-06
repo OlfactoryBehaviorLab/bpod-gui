@@ -12,8 +12,8 @@ from qtpy.QtWidgets import (
     QPushButton,
 )
 from bpod_gui import __version__ as VERSION  # NOQA: N812
-from .state_machine_widget import StateMachineWidget
-from .module_widget import ModuleWidget
+from bpod_gui.ui.console.state_machine_widget import StateMachineWidget
+from bpod_gui.ui.console.module_widget import ModuleWidget
 
 
 class ManualControlContainer(QDockWidget):
