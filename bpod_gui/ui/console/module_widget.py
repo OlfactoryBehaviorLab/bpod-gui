@@ -2,6 +2,11 @@ from qtpy.QtWidgets import QWidget, QGridLayout, QLineEdit, QPushButton, QSizePo
 
 
 class ModuleWidget(QWidget):
+    """
+    ModuleWidget (inherits from QWidget): Class implements the serial command elements for
+    manually controlling misc. Bpod modules
+    """
+
     def __init__(self):
         super().__init__()
 

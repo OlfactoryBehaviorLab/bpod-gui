@@ -11,11 +11,9 @@ from qtpy.QtWidgets import (
     QLayout,
     QPushButton,
 )
-from bpod_gui import __version__
+from bpod_gui import __version__ as VERSION
 from .state_machine_widget import StateMachineWidget
 from .module_widget import ModuleWidget
-
-VERSION = __version__
 
 
 class ManualControlContainer(QDockWidget):
@@ -27,13 +25,16 @@ class ManualControlContainer(QDockWidget):
 
 
 class ManualControl(QWidget):
+    """
+    ManualControl Widget: UI element that contains the manual controls for the Bpod's IO
+    """
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Manual Control")
         self.main_layout = QGridLayout()
         self.setLayout(self.main_layout)
 
-        ## Row 1
+        ## ===Row 1===
         self.title = QLabel()
         self.title.setSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum)
         self.title.setText("Bpod Console ")
@@ -53,16 +54,16 @@ class ManualControl(QWidget):
         self.main_layout.addWidget(self.title_line, 0, 2, 1, -1)
 
         ## ===Row 2===
-        # Column 1: Live Info
+        # Leftmost Column: Live Info Display
         self.live_info_layout = LiveInfoColumn()
         self.main_layout.addLayout(self.live_info_layout, 1, 0, -1, 1)
 
         # Middle Columns: Tabbed Controls
-
         self.central_tabbed_container = QTabWidget()
         self.central_tabbed_container.setSizePolicy(QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.MinimumExpanding)
         self.state_machine_widget = StateMachineWidget()
         self.central_tabbed_container.addTab(self.state_machine_widget, "State Machine")
+
         # These are placeholders; will dynamically fill later
         self.central_tabbed_container.addTab(ModuleWidget(), "Module 1")
         self.central_tabbed_container.addTab(ModuleWidget(), "Module 2")
@@ -103,15 +104,21 @@ class ManualControl(QWidget):
 
 
 class LiveInfoColumn(QVBoxLayout):
+    """
+    LiveInfoColumn (inherits from QVBoxLayout): Class holds the live information display components that
+    populate the leftmost column in the ManualControl UI
+    """
 
     def __init__(self):
         super().__init__()
+        # Header
         self.live_info_header = QLabel()
         self.live_info_header.setText("  Live Info  ")
         self.live_info_header.setProperty("type", "header")
         self.live_info_header.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.addWidget(self.live_info_header)
 
+        # Current State Label and Display Field
         self.current_state_header = QLabel()
         self.current_state_header.setText("Current State")
         self.current_state_display = QLabel()
@@ -121,6 +128,7 @@ class LiveInfoColumn(QVBoxLayout):
         self.addWidget(self.current_state_header)
         self.addWidget(self.current_state_display)
 
+        # Previous State Label and Display Field
         self.previous_state_header = QLabel()
         self.previous_state_header.setText("Previous State")
         self.previous_state_display = QLabel()
@@ -130,6 +138,7 @@ class LiveInfoColumn(QVBoxLayout):
         self.addWidget(self.previous_state_header)
         self.addWidget(self.previous_state_display)
 
+        # Last State Label and Display Field
         self.last_event_header = QLabel()
         self.last_event_header.setText("Last Event")
         self.last_event_display = QLabel()
@@ -139,6 +148,7 @@ class LiveInfoColumn(QVBoxLayout):
         self.addWidget(self.last_event_header)
         self.addWidget(self.last_event_display)
 
+        # Session Time Label and Display Field
         self.session_time_header = QLabel()
         self.session_time_header.setText("Session Time")
         self.session_time_display = QLabel()
@@ -148,6 +158,7 @@ class LiveInfoColumn(QVBoxLayout):
         self.addWidget(self.session_time_header)
         self.addWidget(self.session_time_display)
 
+        # COM Port Label and Display Field
         self.port_header = QLabel()
         self.port_header.setText("Port")
         self.port_display = QLabel()
@@ -157,23 +168,31 @@ class LiveInfoColumn(QVBoxLayout):
         self.addWidget(self.port_header)
         self.addWidget(self.port_display)
 
+        # UI Version
         self.gui_version = QLabel()
         self.gui_version.setText(f"v{VERSION}")
         self.gui_version.setAlignment(Qt.AlignmentFlag.AlignLeft)
         self.gui_version.setObjectName("version")
         self.addWidget(self.gui_version)
 
+        # Apply size policy to each element in the layout
         ManualControl.apply_size_policy_to_layout(
             self,
             QSizePolicy.Policy.Maximum,
             QSizePolicy.Policy.Maximum,
         )
+        # Apply a max width to each element in the layout
         ManualControl.apply_max_width_to_layout(self, 150)
 
 class ControlsColumn(QVBoxLayout):
+    """
+    ControlsColumn (inherits from QVBoxLayout): Class holds misc. QButtons and labels for menu items
+    in addition to session start/stop
+    """
     def __init__(self):
         super().__init__()
 
+        # Config Controls Header
         self.config_layout = QGridLayout()
         self.config_layout.setAlignment(Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignHCenter)
         self.config_header = QLabel()
@@ -182,6 +201,7 @@ class ControlsColumn(QVBoxLayout):
         self.config_header.setProperty("type", "header")
         self.addWidget(self.config_header)
 
+        # Settings/Configuration Buttons
         self.refresh_button = QPushButton()
         self.refresh_button.setText("R")
         self.refresh_button.setToolTip("Refresh Module Information")
@@ -206,6 +226,7 @@ class ControlsColumn(QVBoxLayout):
 
         self.addLayout(self.config_layout)
 
+        # Session Controls
         self.session_controls_layout = QVBoxLayout()
         self.session_controls_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
         self.session_controls_header = QLabel()
