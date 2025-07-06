@@ -1,4 +1,4 @@
-from qtpy import QtWidgets, QtGui, QtCore
+from qtpy import QtWidgets, QtGui, QtCore  # NOQA N999
 from qtpy.QtCore import Qt
 
 
@@ -8,10 +8,10 @@ class LED(QtWidgets.QAbstractButton):
         self.setCheckable(True)
         self._size = size
 
-    def sizeHint(self) -> QtCore.QSize:
+    def sizeHint(self) -> QtCore.QSize:  # NOQA N802
         return QtCore.QSize(self._size, self._size)
 
-    def paintEvent(self, e) -> None:
+    def paintEvent(self, e) -> None:  # NOQA ARG002, N802
         # base
         size = min(self.size().toTuple())
         w_line = round(size / 25) * 2

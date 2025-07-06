@@ -10,9 +10,7 @@ class StateMachineWidget(QWidget):
         self.num_ports: int = 8
 
         self.setObjectName("state_machine_widget")
-        self.setSizePolicy(
-            QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Maximum
-        )
+        self.setSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Maximum)
         self.grid_layout = QGridLayout()
         self.setLayout(self.grid_layout)
 
@@ -77,6 +75,7 @@ class StateMachineWidget(QWidget):
         self.wire_controls = WireControls()
         self.grid_layout.addLayout(self.wire_controls, 3, 4, -1, -1)
 
+
 class BehaviorPortControls(QGridLayout):
     def __init__(self, num_ports):
         super().__init__()
@@ -89,9 +88,7 @@ class BehaviorPortControls(QGridLayout):
         _blank = QLabel()
         _blank.setText("")
         _blank.setAlignment(Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignHCenter)
-        _blank.setSizePolicy(
-            QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
-        )
+        _blank.setSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum)
         self.addWidget(_blank, 0, 0, 1, 1)
 
         _valve_controls_label = QLabel()
@@ -125,29 +122,29 @@ class BehaviorPortControls(QGridLayout):
             _port_label.setSizePolicy(
                 QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Maximum
             )
-            _port_label.setObjectName(f'port_{i + 1}_label')
-            self.addWidget(_port_label, 0, i+1, 1, 1)
+            _port_label.setObjectName(f"port_{i + 1}_label")
+            self.addWidget(_port_label, 0, i + 1, 1, 1)
 
             _valve_button = LED()
             _valve_button.setSizePolicy(
                 QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
             )
-            _valve_button.setObjectName(f'valve_{i+1}')
-            self.addWidget(_valve_button, 1, i+1, 1, 1)
+            _valve_button.setObjectName(f"valve_{i + 1}")
+            self.addWidget(_valve_button, 1, i + 1, 1, 1)
 
             _LED_button = LED()
             _LED_button.setSizePolicy(
                 QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
             )
-            _LED_button.setObjectName(f'LED_{i+1}')
-            self.addWidget(_LED_button, 2, i+1, 1, 1)
+            _LED_button.setObjectName(f"LED_{i + 1}")
+            self.addWidget(_LED_button, 2, i + 1, 1, 1)
 
             _poke_button = LED()
             _poke_button.setSizePolicy(
                 QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
             )
-            _poke_button.setObjectName(f'poke_{i+1}')
-            self.addWidget(_poke_button, 3, i+1, 1, 1)
+            _poke_button.setObjectName(f"poke_{i + 1}")
+            self.addWidget(_poke_button, 3, i + 1, 1, 1)
 
 
 class IOControls(QGridLayout):
@@ -190,29 +187,30 @@ class IOControls(QGridLayout):
         self.input_1_button.setSizePolicy(
             QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
         )
-        self.input_1_button.setObjectName('input_1_button')
+        self.input_1_button.setObjectName("input_1_button")
         self.addWidget(self.input_1_button, 1, 0, 1, 1)
 
         self.input_2_button = LED()
         self.input_2_button.setSizePolicy(
             QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
         )
-        self.input_2_button.setObjectName('input_2_button')
+        self.input_2_button.setObjectName("input_2_button")
         self.addWidget(self.input_2_button, 1, 1, 1, 1)
 
         self.output_1_button = LED()
         self.output_1_button.setSizePolicy(
             QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
         )
-        self.output_1_button.setObjectName('output_1_button')
+        self.output_1_button.setObjectName("output_1_button")
         self.addWidget(self.output_1_button, 1, 3, 1, 1)
 
         self.output_2_button = LED()
         self.output_2_button.setSizePolicy(
             QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
         )
-        self.output_2_button.setObjectName('output_2_button')
+        self.output_2_button.setObjectName("output_2_button")
         self.addWidget(self.output_2_button, 1, 4, 1, 1)
+
 
 class WireControls(QGridLayout):
     def __init__(self):
@@ -254,28 +252,28 @@ class WireControls(QGridLayout):
         self.wire_in_1_button.setSizePolicy(
             QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
         )
-        self.wire_in_1_button.setObjectName('wire_in_1_button')
+        self.wire_in_1_button.setObjectName("wire_in_1_button")
         self.addWidget(self.wire_in_1_button, 1, 0, 1, 1)
 
         self.wire_in_2_button = LED()
         self.wire_in_2_button.setSizePolicy(
             QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
         )
-        self.wire_in_2_button.setObjectName('wire_in_2_button')
+        self.wire_in_2_button.setObjectName("wire_in_2_button")
         self.addWidget(self.wire_in_2_button, 1, 1, 1, 1)
 
         self.wire_in_3_button = LED()
         self.wire_in_3_button.setSizePolicy(
             QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
         )
-        self.wire_in_3_button.setObjectName('wire_in_3_button')
+        self.wire_in_3_button.setObjectName("wire_in_3_button")
         self.addWidget(self.wire_in_3_button, 3, 0, 1, 1)
 
         self.wire_in_4_button = LED()
         self.wire_in_4_button.setSizePolicy(
             QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
         )
-        self.wire_in_4_button.setObjectName('wire_in_4_button')
+        self.wire_in_4_button.setObjectName("wire_in_4_button")
         self.addWidget(self.wire_in_4_button, 3, 1, 1, 1)
 
         self.wire_out_1_label = QLabel()
@@ -314,26 +312,26 @@ class WireControls(QGridLayout):
         self.wire_out_1_button.setSizePolicy(
             QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
         )
-        self.wire_out_1_button.setObjectName('wire_out_1_button')
+        self.wire_out_1_button.setObjectName("wire_out_1_button")
         self.addWidget(self.wire_out_1_button, 1, 3, 1, 1)
 
         self.wire_out_2_button = LED()
         self.wire_out_2_button.setSizePolicy(
             QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
         )
-        self.wire_out_2_button.setObjectName('wire_out_2_button')
+        self.wire_out_2_button.setObjectName("wire_out_2_button")
         self.addWidget(self.wire_out_2_button, 1, 4, 1, 1)
 
         self.wire_out_3_button = LED()
         self.wire_out_3_button.setSizePolicy(
             QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
         )
-        self.wire_out_3_button.setObjectName('wire_out_3_button')
+        self.wire_out_3_button.setObjectName("wire_out_3_button")
         self.addWidget(self.wire_out_3_button, 3, 3, 1, 1)
 
         self.wire_out_4_button = LED()
         self.wire_out_4_button.setSizePolicy(
             QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Maximum
         )
-        self.wire_out_4_button.setObjectName('wire_in_4_button')
+        self.wire_out_4_button.setObjectName("wire_in_4_button")
         self.addWidget(self.wire_out_4_button, 3, 4, 1, 1)

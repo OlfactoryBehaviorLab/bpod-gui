@@ -11,7 +11,7 @@ from qtpy.QtWidgets import (
     QLayout,
     QPushButton,
 )
-from bpod_gui import __version__ as VERSION
+from bpod_gui import __version__ as VERSION  # NOQA: N812
 from .state_machine_widget import StateMachineWidget
 from .module_widget import ModuleWidget
 
@@ -28,6 +28,7 @@ class ManualControl(QWidget):
     """
     ManualControl Widget: UI element that contains the manual controls for the Bpod's IO
     """
+
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Manual Control")
@@ -60,7 +61,9 @@ class ManualControl(QWidget):
 
         # Middle Columns: Tabbed Controls
         self.central_tabbed_container = QTabWidget()
-        self.central_tabbed_container.setSizePolicy(QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.MinimumExpanding)
+        self.central_tabbed_container.setSizePolicy(
+            QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.MinimumExpanding
+        )
         self.state_machine_widget = StateMachineWidget()
         self.central_tabbed_container.addTab(self.state_machine_widget, "State Machine")
 
@@ -184,17 +187,21 @@ class LiveInfoColumn(QVBoxLayout):
         # Apply a max width to each element in the layout
         ManualControl.apply_max_width_to_layout(self, 150)
 
+
 class ControlsColumn(QVBoxLayout):
     """
     ControlsColumn (inherits from QVBoxLayout): Class holds misc. QButtons and labels for menu items
     in addition to session start/stop
     """
+
     def __init__(self):
         super().__init__()
 
         # Config Controls Header
         self.config_layout = QGridLayout()
-        self.config_layout.setAlignment(Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignHCenter)
+        self.config_layout.setAlignment(
+            Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignHCenter
+        )
         self.config_header = QLabel()
         self.config_header.setText("  Config  ")
         self.config_header.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -238,14 +245,17 @@ class ControlsColumn(QVBoxLayout):
         self.session_play_pause_button = QPushButton()
         self.session_play_pause_button.setText("Play")
         self.session_play_pause_button.setMaximumSize(QSize(90, 90))
-        self.session_play_pause_button.setSizePolicy(QSizePolicy.Policy.MinimumExpanding,
-                                                     QSizePolicy.Policy.MinimumExpanding)
+        self.session_play_pause_button.setSizePolicy(
+            QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.MinimumExpanding
+        )
         self.session_controls_layout.addWidget(self.session_play_pause_button)
 
         self.session_stop_button = QPushButton()
         self.session_stop_button.setText("Stop")
         self.session_stop_button.setMaximumSize(QSize(90, 90))
-        self.session_stop_button.setSizePolicy(QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.MinimumExpanding)
+        self.session_stop_button.setSizePolicy(
+            QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.MinimumExpanding
+        )
         self.session_controls_layout.addWidget(self.session_stop_button)
 
         self.addLayout(self.session_controls_layout)

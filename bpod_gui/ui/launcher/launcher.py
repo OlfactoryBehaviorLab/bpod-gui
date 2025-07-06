@@ -1,9 +1,17 @@
 import sys
 
-from qtpy.QtWidgets import QMainWindow, QGridLayout, QPushButton, QWidget, QSizePolicy, QMenuBar
+from qtpy.QtWidgets import (
+    QMainWindow,
+    QGridLayout,
+    QPushButton,
+    QWidget,
+    QSizePolicy,
+    QMenuBar,
+)
 from qtpy.QtCore import QSize
 
 from .about_dialog import About
+
 
 class Launcher(QMainWindow):
     def __init__(self):
@@ -18,12 +26,18 @@ class Launcher(QMainWindow):
         self.protocol_button = QPushButton()
         self.manual_control_button = QPushButton()
         self.configure_button = QPushButton()
-        self.protocol_button.setText('Launch Protocol!')
-        self.manual_control_button.setText('Manual Control')
-        self.configure_button.setText('Configuration')
-        self.protocol_button.setSizePolicy(QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.MinimumExpanding)
-        self.manual_control_button.setSizePolicy(QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.Preferred)
-        self.configure_button.setSizePolicy(QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.Preferred)
+        self.protocol_button.setText("Launch Protocol!")
+        self.manual_control_button.setText("Manual Control")
+        self.configure_button.setText("Configuration")
+        self.protocol_button.setSizePolicy(
+            QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.MinimumExpanding
+        )
+        self.manual_control_button.setSizePolicy(
+            QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.Preferred
+        )
+        self.configure_button.setSizePolicy(
+            QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.Preferred
+        )
         self.manual_control_button.setMinimumSize(QSize(60, 60))
         self.configure_button.setMinimumSize(QSize(60, 60))
         self.main_layout.addWidget(self.protocol_button, 0, 0, 1, -1)
@@ -34,11 +48,11 @@ class Launcher(QMainWindow):
         self.about_dialog = About(self)
 
         menubar = QMenuBar()
-        file_menu = menubar.addMenu(u'&File')
-        exit_action = file_menu.addAction(u'&Exit')
+        file_menu = menubar.addMenu("&File")
+        exit_action = file_menu.addAction("&Exit")
         exit_action.triggered.connect(sys.exit)  # We may have cleanup to do here later
 
-        about_menu = menubar.addAction(u'&About')
+        about_menu = menubar.addAction("&About")
         about_menu.triggered.connect(self.about_dialog.open)  # Launch about dialog
         self.setMenuBar(menubar)
 
