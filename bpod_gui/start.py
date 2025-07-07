@@ -1,5 +1,6 @@
 import sys
 import logging
+from pathlib import Path
 from qtpy import QtWidgets
 from bpod_gui.ui.console import ManualControl
 
@@ -12,11 +13,34 @@ def launch_gui():
     app = QtWidgets.QApplication(sys.argv)
     app.setStyle("Fusion")
     mc = ManualControl(main_logger)
-    with open("bpod_gui/qss/manual_control_interface.qss") as f:
-        style = f.read()
-        mc.setStyleSheet(style)
+    settings_widget = settings.Settings()
 
-    # launcher = Launcher()
-    # launcher.show()
-    mc.show()
+    stylesheets = get_stylesheets(Path("bpod_gui/qss"))
+    apply_stylesheet(app, stylesheets, "base")
+    apply_stylesheet(mc, stylesheets, "manual_control_interface")
+    apply_stylesheet(settings_widget, stylesheets, "settings")
+
+    settings_widget.show()
+    # mc.show()
     app.exec()
+
+def get_stylesheets(style_sheet_dir: Path):
+    stylesheets = {}
+
+    if style_sheet_dir.exists():
+        all_stylesheets_glob = style_sheet_dir.glob('*.qss')
+        for stylesheet_path in all_stylesheets_glob:
+            stylesheets[stylesheet_path.stem] = stylesheet_path
+    else:
+        raise FileExistsError(f"Style sheet dir {style_sheet_dir} does not exist!")
+
+    return stylesheets
+
+
+def apply_stylesheet(widget: QtWidgets.QWidget, stylesheets: dict[str, Path], to_apply: str):
+    if to_apply in stylesheets:
+        with open(stylesheets[to_apply]) as f:
+            style = f.read()
+            widget.setStyleSheet(style)
+    else:
+        main_logger.error("%s not found in stylesheets directory!", to_apply)
