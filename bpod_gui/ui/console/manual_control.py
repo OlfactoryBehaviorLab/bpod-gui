@@ -34,6 +34,7 @@ class ManualControl(QWidget):
         self.setWindowTitle("Manual Control")
         self.main_layout = QGridLayout()
         self.setLayout(self.main_layout)
+        self.setFixedSize(QSize(725, 365))
 
         ## ===Row 1===
         self.title = QLabel()
