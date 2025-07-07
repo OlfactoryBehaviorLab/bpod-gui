@@ -29,8 +29,10 @@ class ManualControl(QWidget):
     ManualControl Widget: UI element that contains the manual controls for the Bpod's IO
     """
 
-    def __init__(self):
+    def __init__(self, logger):
         super().__init__()
+        self.main_logger = logger
+
         self.setWindowTitle("Manual Control")
         self.main_layout = QGridLayout()
         self.setLayout(self.main_layout)
