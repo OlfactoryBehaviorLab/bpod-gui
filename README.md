@@ -11,5 +11,10 @@ We utilize **uv** developed by [**astral**](https://github.com/astral-sh/uv) to 
 ### Instructions:
 1) Install the Python 3.13 binaries by running ```uv python install 3.13```
 2) Clone the repository using ```git clone git@github.com:olfactorybehaviorlab/bpod-gui```
-3) In the same directory, run ```uv sync``` to install the pinned version of the dependencies from the **uv.lock** file into a new .venv
-4) In the same directory, run ```uv pip install -e .``` to install the package in _editable_ for development
+3) In the same directory, run ```uv sync --extra [QT PACKAGE]``` to install the pinned version of the dependencies from the **uv.lock** file into a new .venv
+   - There are four options for python qt libraries. Please choose one of the following to install your preferred version and substitute it for ```[QT PACKAGE]```
+   in the above command
+   1) ```pyqt5```
+   2) ```pyside2```
+   3) ```pyqt6```
+   4) ```pyside6```
