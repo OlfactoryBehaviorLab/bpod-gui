@@ -13,14 +13,11 @@ def launch_gui():
     app = QtWidgets.QApplication(sys.argv)
     app.setStyle("Fusion")
     mc = ManualControl(main_logger)
-    settings_widget = settings.Settings()
 
     stylesheets = get_stylesheets(Path("bpod_gui/qss"))
     apply_stylesheet(app, stylesheets, "base")
     apply_stylesheet(mc, stylesheets, "manual_control_interface")
-    apply_stylesheet(settings_widget, stylesheets, "settings")
 
-    settings_widget.show()
     # mc.show()
     app.exec()
 
