@@ -1,20 +1,22 @@
 # bpod-gui
-___
-**bpod-gui** is a Python package that provides a set of standardized GUIs for interacting with the *Bpod Finate State Machine* from [*Sanworks*](https://sanworks.io/).
 
-This package relies on the **bpod-core** package created by the [*International Brain Lab*](https://internationalbrainlab.org).
+A Python package that provides a set of standardized GUIs for interacting with the *Bpod Finate State Machine* from [*Sanworks*](https://sanworks.io/).
 
-___
-## Development Setup
-We utilize **uv** developed by [**astral**](https://github.com/astral-sh/uv) to manage dependencies, Python versions, and environments.
+>This package is intended to be utilized alongside the **bpod-rig** package which can be found [here](https://github.com/sanworks/bpod-rig/)
 
-### Instructions:
-1) Install the Python 3.13 binaries by running ```uv python install 3.13```
-2) Clone the repository using ```git clone git@github.com:olfactorybehaviorlab/bpod-gui```
-3) In the same directory, run ```uv sync --extra [QT PACKAGE]``` to install the pinned version of the dependencies from the **uv.lock** file into a new .venv
-   - There are four options for python qt libraries. Please choose one of the following to install your preferred version and substitute it for ```[QT PACKAGE]```
-   in the above command
-   1) ```pyqt5```
-   2) ```pyside2```
-   3) ```pyqt6```
-   4) ```pyside6```
+**bpod-gui** is currently being developed and maintained by Austin Pauley from the Olfactory Behavior Lab at Florida State University.
+
+## Included GUIs
+1) Simple Launcher
+2) Manual Control Interface
+3) Water Solenoid Calibration Interface
+4) Protocol Selector
+   1) Subject Manager
+   2) Experiment Selection
+   3) Experiment Settings/Configuration Selection
+5) Configuration Interface
+6) Live Experiment Data Output
+
+## Links
+- International Brain Lab's Bpod communication library: [bpod-core](https://github.com/int-brain-lab/bpod-core)
+- [Bpod Wiki](https://sanworks.github.io/Bpod_Wiki) -- maintained by [Sanworks](https://sanworks.io)
