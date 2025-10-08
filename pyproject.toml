@@ -27,6 +27,9 @@ pyqt5 = ["pyqt5"]
 pyside2 = ["pyside2"]
 pyqt6 = ["pyqt6"]
 pyside6 = ["pyside6"]
+docs = [
+    "sphinx>=8.2.3",
+]
 
 
 [project.urls]
