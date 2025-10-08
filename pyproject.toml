@@ -29,6 +29,7 @@ pyqt6 = ["pyqt6"]
 pyside6 = ["pyside6"]
 docs = [
     "sphinx>=8.2.3",
+    "sphinx-autobuild>=2025.8.25",
 ]
 
 
