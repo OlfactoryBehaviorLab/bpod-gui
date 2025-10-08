@@ -28,6 +28,7 @@ pyside2 = ["pyside2"]
 pyqt6 = ["pyqt6"]
 pyside6 = ["pyside6"]
 docs = [
+    "myst-parser>=4.0.1",
     "sphinx>=8.2.3",
     "sphinx-autobuild>=2025.8.25",
     "sphinx-rtd-theme>=3.0.2",
