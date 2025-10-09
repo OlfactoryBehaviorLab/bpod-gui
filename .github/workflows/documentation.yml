@@ -20,7 +20,7 @@ jobs:
             ref: docs
         - uses: astral-sh/setup-uv@v6
         - name: sync dependencies
-          run: uv sync --no-default-groups --group docs
+          run: uv sync --no-default-groups --extra docs
         - name: build documentation
           run: uv run sphinx-build docs/source docs/build
         - uses: peaceiris/actions-gh-pages@v4
