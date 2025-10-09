@@ -84,7 +84,7 @@ To install the documentation depedencies, run the following command:
 
 .. code-block:: console
 
-    $ uv sync --extra docs
+    $ uv sync --no-default-groups --extra docs
 
 Once the dependencies are installed, the HTML needs to be built. If the documentation only needs to be built once, use
 *sphinx-build.* However, if developing new documentation, *sphinx-autobuild* can be used to automatically regenerate the
