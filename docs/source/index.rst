@@ -13,6 +13,7 @@
    :maxdepth: 3
    :hidden:
 
+   dev
 
 .. toctree::
    :caption: Links
