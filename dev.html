@@ -1,0 +1,225 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Developer Environment Setup &mdash; bpod-gui 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="bpod-gui" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            bpod-gui
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sections</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developer Environment Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installing-uv">Installing UV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-bpod-gui">Installing <code class="docutils literal notranslate"><span class="pre">bpod-gui</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-build">Documentation Build</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/olfactorybehaviorlab/bpod-gui">bpod-gui on GitHub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">bpod-gui</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Developer Environment Setup</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/dev.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="developer-environment-setup">
+<h1>Developer Environment Setup<a class="headerlink" href="#developer-environment-setup" title="Link to this heading"></a></h1>
+<section id="installing-uv">
+<h2>Installing UV<a class="headerlink" href="#installing-uv" title="Link to this heading"></a></h2>
+<p>We utilize Astral’s <a class="reference external" href="https://github.com/astral-sh/uv">UV</a> as the package manager for this project. UV is
+an all-in-one tool for managing depedencies and creating reproducable environments using a sharable <cite>uv.lock</cite> file.
+To install UV select your OS and run the command:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-0">
+Linux and macOS</label><div class="sd-tab-content docutils">
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>-LsSf<span class="w"> </span>https://astral.sh/uv/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-1">
+Windows</label><div class="sd-tab-content docutils">
+<div class="highlight-pwsh-session notranslate"><div class="highlight"><pre><span></span><span class="gp">PS&gt; </span><span class="n">powershell</span> <span class="n">-ExecutionPolicy</span> <span class="n">ByPass</span> <span class="n">-c</span> <span class="s2">&quot;irm https://astral.sh/uv/install.ps1 | iex&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>See <a class="reference external" href="https://docs.astral.sh/uv/">UV’s documentation</a> for more details.</p>
+</section>
+<section id="installing-bpod-gui">
+<h2>Installing <code class="docutils literal notranslate"><span class="pre">bpod-gui</span></code><a class="headerlink" href="#installing-bpod-gui" title="Link to this heading"></a></h2>
+<p>At this time, <code class="docutils literal notranslate"><span class="pre">bpod-gui</span></code> is not available via PyPi and must be cloned from GitHub using the below command:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">olfactorybehaviorlab</span><span class="o">/</span><span class="n">bpod</span><span class="o">-</span><span class="n">gui</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">bpod-gui</span></code> is created using <code class="docutils literal notranslate"><span class="pre">qtpy</span></code> to allow developers to utilize their preferred Qt Python bindings.
+Each binding has a different license–some of which require a purchase for commercial use-cases. The available bindings are:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><a class="reference external" href="https://pypi.org/project/PySide6/">PySide6</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/PySide2/">PySide2</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/PyQt5/">PyQt5</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/PyQt6/">PyQt6</a></p></li>
+</ol>
+</div></blockquote>
+<p>Using <strong>UV</strong> we can simultaneously create a virtual environment, install the required core depdencies, and install any
+extra/optional depdencies. Select the Qt binding package you would like to use and run the included command from within
+the cloned <code class="docutils literal notranslate"><span class="pre">bpod-gui</span></code> repository:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-2">
+Package only (no Qt Bindings)</label><div class="sd-tab-content docutils">
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>uv<span class="w"> </span>sync
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-3">
+PySide6</label><div class="sd-tab-content docutils">
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>uv<span class="w"> </span>sync<span class="w"> </span>--extra<span class="w"> </span>pyside6
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-4">
+PySide2</label><div class="sd-tab-content docutils">
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>uv<span class="w"> </span>sync<span class="w"> </span>--extra<span class="w"> </span>pyside2
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-5">
+PyQt5</label><div class="sd-tab-content docutils">
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>uv<span class="w"> </span>sync<span class="w"> </span>--extra<span class="w"> </span>pyqt5
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-6" name="sd-tab-set-1" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-6">
+PyQt6</label><div class="sd-tab-content docutils">
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>uv<span class="w"> </span>sync<span class="w"> </span>--extra<span class="w"> </span>pyqt6
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="documentation-build">
+<h2>Documentation Build<a class="headerlink" href="#documentation-build" title="Link to this heading"></a></h2>
+<p>We use <a class="reference external" href="https://www.sphinx-doc.org/">Sphinx</a> to build our documentation</p>
+<p>To install the documentation depedencies, run the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>uv<span class="w"> </span>sync<span class="w"> </span>--no-default-groups<span class="w"> </span>--extra<span class="w"> </span>docs
+</pre></div>
+</div>
+<p>Once the dependencies are installed, the HTML needs to be built. If the documentation only needs to be built once, use
+<em>sphinx-build.</em> However, if developing new documentation, <em>sphinx-autobuild</em> can be used to automatically regenerate the
+HTML as changes are made. Select the method you would like to use and run the command:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-7" name="sd-tab-set-2" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-7">
+sphinx-build</label><div class="sd-tab-content docutils">
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>uv<span class="w"> </span>run<span class="w"> </span>sphinx-build<span class="w"> </span>docs/source<span class="w"> </span>docs/build
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-8" name="sd-tab-set-2" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-8">
+sphinx-autobuild</label><div class="sd-tab-content docutils">
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>uv<span class="w"> </span>run<span class="w"> </span>sphinx-autobuild<span class="w"> </span>docs/source<span class="w"> </span>docs/build
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="bpod-gui" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Austin Pauley.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
